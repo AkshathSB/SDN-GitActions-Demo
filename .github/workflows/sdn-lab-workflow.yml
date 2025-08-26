@@ -24,7 +24,7 @@ jobs:
         echo "=== SDN Lab GitHub Actions Demo ==="
         echo "Repository: SDN-GitActions-Demo"
         echo "Author: Akshath"
-        echo "Date: 08/26/2025 22:44:30"
+        echo "Date: 08/26/2025 22:47:38"
         echo "Python Version: Python 3.13.7"
         
     - name: Run Python script
@@ -34,10 +34,10 @@ jobs:
     - name: Create build artifact
       run: |
         echo "Build completed successfully!" > build-result.txt
-        echo "Timestamp: 08/26/2025 22:44:30" >> build-result.txt
+        echo "Timestamp: 08/26/2025 22:47:38" >> build-result.txt
         
     - name: Upload build artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: build-results
         path: build-result.txt
