@@ -1,0 +1,48 @@
+﻿name: SDN Lab CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Display project info
+      run: |
+        echo "=== SDN Lab GitHub Actions Demo ==="
+        echo "Repository: SDN-GitActions-Demo"
+        echo "Author: Akshath"
+        echo "Date: 08/26/2025 22:44:30"
+        echo "Python Version: Python 3.13.7"
+        
+    - name: Run Python script
+      run: |
+        python hello.py
+        
+    - name: Create build artifact
+      run: |
+        echo "Build completed successfully!" > build-result.txt
+        echo "Timestamp: 08/26/2025 22:44:30" >> build-result.txt
+        
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-results
+        path: build-result.txt
+        
+    - name: Workflow completion
+      run: |
+        echo "✅ SDN Lab GitHub Actions workflow completed successfully!"
+        echo "✅ All automation steps executed"
